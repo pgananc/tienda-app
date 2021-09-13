@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<ui:composition template="/WEB-INF/template/base.xhtml">
+	<ui:define name="content">
+		<h:form id="frmRegistarVenta">
+
+			<p:messages id="msg" rendered="#{not facesContext.validationFailed}"
+				autoUpdate="true" />
+
+			
+			<div>
+				<h:outputText value="Carrito de Compras" />
+				<p:dataTable var="car"
+					value="#{carroComprasControlador.listaDetalle}">
+
+					<p:column headerText="Codigo">
+						<h:outputText value="#{car.producto.codigo}" />
+					</p:column>
+
+					<p:column headerText="Nombre">
+						<h:outputText value="#{car.producto.nombre}" />
+					</p:column>
+
+					<p:column headerText="Cantidad">
+						<h:outputText value="#{car.cantidad}" />
+					</p:column>
+
+					<p:column headerText="Precio">
+						<h:outputText value="#{car.producto.precio}" />
+					</p:column>
+
+
+
+					<p:column headerText="SubTotal">
+						<h:outputText value="#{car.producto.precio * car.cantidad}" />
+					</p:column>
+
+				</p:dataTable>
+
+
+			</div>
+			<h:commandButton value="Registrar Venta"
+				action="#{carroComprasControlador.guardar}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

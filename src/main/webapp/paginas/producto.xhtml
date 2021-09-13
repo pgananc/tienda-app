@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<ui:composition template="/WEB-INF/template/base.xhtml">
+	<ui:define name="content">
+		<h:form id="formProducto">
+			<p:messages id="msg" rendered="#{not facesContext.validationFailed}"
+				autoUpdate="true" />
+			<p:panel header="Producto" id="pnlProducto">
+				<h:panelGrid columns="3" id="pgProducto">
+					<p:outputLabel value="Codigo:" for="txtCodigo" />
+					<p:inputText id="txtCodigo"
+						value="#{productoControlador.productoDto.codigo}" maxlength="15"
+						required="true" requiredMessage="Campo requerido." />
+					<p:message for="txtCodigo" />
+					<p:outputLabel value="Nombre:" for="txtNombre" />
+					<p:inputText id="txtNombre"
+						value="#{productoControlador.productoDto.nombre}" required="true"
+						requiredMessage="Campo requerido." />
+					<p:message for="txtNombre" />
+					<p:outputLabel value="Descipcion:" for="txtDescripcion" />
+					<p:inputText id="txtDescripcion"
+						value="#{productoControlador.productoDto.descripcion}" required="true"
+						requiredMessage="Campo requerido." />
+					<p:message for="txtDescripcion" />
+					<p:outputLabel value="Cantidad:" for="txtCantidad" />
+					<p:inputText id="txtCantidad"
+						value="#{productoControlador.productoDto.cantidad}" required="true"
+						requiredMessage="Campo requerido." />
+					<p:message for="txtCantidad" />
+					<p:outputLabel value="Precio:" for="txtPrecio" />
+					<p:inputText id="txtPrecio"
+						value="#{productoControlador.productoDto.precio}" required="true"
+						requiredMessage="Campo requerido." />
+					<p:message for="txtPrecio" />
+					<p:outputLabel value="Tipo Producto:" for="cmbTipoProducto" />
+					<p:selectOneMenu id="cmbTipoProducto" required="true"
+						requiredMessage="Campo requerido."
+						value="#{productoControlador.productoDto.tipoProducto.idTipoProducto}">
+						<f:selectItem itemLabel="Seleccione.." noSelectionOption="true" />
+						<f:selectItems value="#{productoControlador.listaTipoProducto}"
+							var="tipoProducto" itemLabel="#{tipoProducto.nombre}"
+							itemValue="#{tipoProducto.idTipoProducto}" />
+					</p:selectOneMenu>
+					<p:message for="cmbTipoProducto" />
+				</h:panelGrid>
+
+				<p:commandButton action="#{productoControlador.guardar}"
+					update="pnlProducto msg @form" value="Guardar" />
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

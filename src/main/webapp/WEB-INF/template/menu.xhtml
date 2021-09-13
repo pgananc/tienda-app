@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:pa="http://primefaces.org/barcelona">
+	<nav id="panelIconos" class="desborde-contenido-auto">
+		<div id="pnlMenuIcono"
+			class=" layout-sidebar-iconos animated fadeInLeft">
+			<h:form id="frmMenuIcono">
+				<p:menubar>
+					<p:submenu label="Menú">
+						<p:menuitem value="Producto" outcome="/paginas/producto.xhtml" />
+						<p:menuitem value="Kardex" outcome="/paginas/kardex.xhtml" />
+						<p:menuitem value="Carrito de compras" outcome="/paginas/compra.xhtml" />
+						<p:menuitem value="Registrar Venta" outcome="/paginas/registrarVenta.xhtml" />
+					</p:submenu>
+				</p:menubar>
+			</h:form>
+		</div>
+	</nav>
+</ui:composition>
